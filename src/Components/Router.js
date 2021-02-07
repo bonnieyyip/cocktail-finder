@@ -5,7 +5,7 @@ import App from "../App"
 import SingleCocktail from "./SingleCocktail"
 
 const Router = () => (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
             <Route path="/" component={App} exact/>
             <Route path="/recipe/:id" component={SingleCocktail} />
