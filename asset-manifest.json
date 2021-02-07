@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cocktail-finder/static/css/main.aabeeb24.chunk.css",
+    "main.js": "/cocktail-finder/static/js/main.e6effc17.chunk.js",
+    "main.js.map": "/cocktail-finder/static/js/main.e6effc17.chunk.js.map",
+    "runtime-main.js": "/cocktail-finder/static/js/runtime-main.0289f780.js",
+    "runtime-main.js.map": "/cocktail-finder/static/js/runtime-main.0289f780.js.map",
+    "static/css/2.150d169a.chunk.css": "/cocktail-finder/static/css/2.150d169a.chunk.css",
+    "static/js/2.71255813.chunk.js": "/cocktail-finder/static/js/2.71255813.chunk.js",
+    "static/js/2.71255813.chunk.js.map": "/cocktail-finder/static/js/2.71255813.chunk.js.map",
+    "static/js/3.a77efb5a.chunk.js": "/cocktail-finder/static/js/3.a77efb5a.chunk.js",
+    "static/js/3.a77efb5a.chunk.js.map": "/cocktail-finder/static/js/3.a77efb5a.chunk.js.map",
+    "index.html": "/cocktail-finder/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/cocktail-finder/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.aabeeb24.chunk.css.map": "/cocktail-finder/static/css/main.aabeeb24.chunk.css.map",
+    "static/js/2.71255813.chunk.js.LICENSE.txt": "/cocktail-finder/static/js/2.71255813.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0289f780.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.71255813.chunk.js",
+    "static/css/main.aabeeb24.chunk.css",
+    "static/js/main.e6effc17.chunk.js"
+  ]
+}
