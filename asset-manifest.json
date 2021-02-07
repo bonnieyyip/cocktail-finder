@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cocktail-finder/static/css/main.aabeeb24.chunk.css",
-    "main.js": "/cocktail-finder/static/js/main.e6effc17.chunk.js",
-    "main.js.map": "/cocktail-finder/static/js/main.e6effc17.chunk.js.map",
+    "main.js": "/cocktail-finder/static/js/main.8648a0dc.chunk.js",
+    "main.js.map": "/cocktail-finder/static/js/main.8648a0dc.chunk.js.map",
     "runtime-main.js": "/cocktail-finder/static/js/runtime-main.0289f780.js",
     "runtime-main.js.map": "/cocktail-finder/static/js/runtime-main.0289f780.js.map",
     "static/css/2.150d169a.chunk.css": "/cocktail-finder/static/css/2.150d169a.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.150d169a.chunk.css",
     "static/js/2.71255813.chunk.js",
     "static/css/main.aabeeb24.chunk.css",
-    "static/js/main.e6effc17.chunk.js"
+    "static/js/main.8648a0dc.chunk.js"
   ]
 }
