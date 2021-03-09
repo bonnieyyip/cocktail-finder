@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import Form from "./Components/Form";
-import Cocktails from "./Components/Cocktails"
+import SearchBar from "./Components/SearchBar";
+import Cocktails from "./Components/Cocktails";
+import CreateModal from "./Components/CreateRecipeModal";
+import ReactModal from 'react-modal';
 
 class App extends Component {
   state = {
@@ -30,6 +32,16 @@ class App extends Component {
     });
   }
 
+  handleSearchReset = () => {
+    document.getElementById("search-bar").reset();
+    this.setState({ 
+      recipes: []
+    });
+  }
+
+  componentDidMount() {
+    ReactModal.setAppElement('#root');
+  }
   // componentDidMount = () => {
   //   const json = localStorage.getItem("recipes");
   //   const recipes = JSON.parse(json);
@@ -43,11 +55,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" id="App">
         <header className="App-header">
-          <Link className="App-title" to='/'>Cocktail Finder</Link>
+          <h1 className="App-title">Cocktail Finder</h1>
         </header>
-        <Form getRecipe={this.getRecipe} />
+
+        <div className="row">
+          <div className="col-sm-4 offset-sm-3" style={{textAlign: "right"}}>
+            <SearchBar getRecipe={this.getRecipe} />
+          </div>
+          <div className="col-sm-2" style={{textAlign: "left"}}>
+            <button className="form-button" id="clear-search" onClick={this.handleSearchReset}>Clear</button>
+          </div>
+          <div className="col-sm-3" style={{textAlign: "right"}}>
+            <CreateModal/>
+          </div>
+        </div>
         <Cocktails recipes={this.state.recipes}/>
       </div>
     );

@@ -15,16 +15,13 @@ button:focus {
   outline: none;
 }
 
-.App {
-  text-align: center;
-}
-
 .App-header {
   background-color:#bdcebe;
   height: 90px;
   padding: 30px;
   color: white;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .App-title {
@@ -62,7 +59,7 @@ button:focus {
   margin-left: 0.7rem;
 }
 
-/******** Form.js ********/
+/******** Forms ********/
 
 .form-input {
   background: transparent;
@@ -70,7 +67,6 @@ button:focus {
   border-bottom: solid 2px#bdcebe;
   margin-right: 10px;
   letter-spacing: 2px;
-  width: 10%;
   padding: 0.4rem;
 }
 
