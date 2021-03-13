@@ -20,13 +20,16 @@ class CreateRecipeModal extends React.Component {
 
         this.setState({isLoading: true})
 
-        const rawResponse = await fetch('https://even-more-cocktails-api.herokuapp.com/api/v1/cocktails', {
+        console.log(e.target.fileinput.files[0]);
+
+        //https://even-more-cocktails-api.herokuapp.com
+        const rawResponse = await fetch('http://localhost:3000/api/v1/cocktails', {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({title: e.target.title.value, description: e.target.description.value})
+            body: JSON.stringify({strDrink: e.target.title.value, strInstructions: e.target.description.value})
           })
           .then((response) => {
             console.log(response.json());
@@ -80,9 +83,12 @@ class CreateRecipeModal extends React.Component {
                                     <input className="form-input" name="title" type="text" />
                                 </label>
                                 <label>
-                                    Description:
+                                    Instructions:
                                     <input className="form-input" name="description" type="text" />
                                 </label>
+                                <br/>
+                                <label>Upload image of cocktail (optional)</label>
+                                <input type="file" id="fileinput" name="fileinput" accept=".jpg, .jpeg, .png"></input>
                                 <button className="form-button" type="submit" disabled={this.state.isLoading}>{this.state.isLoading ? "Submitting..." : "Submit"}</button>
                             </form> 
                         </div>

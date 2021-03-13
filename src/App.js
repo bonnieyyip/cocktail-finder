@@ -15,20 +15,39 @@ class App extends Component {
     const liquorType = e.target.elements.searchBox.value;
     e.preventDefault();
 
-    const api_call = await fetch(`https://the-cocktail-db.p.rapidapi.com/filter.php?i=${liquorType}`, {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-key": "350df23b49msh7c681161d5c6cd9p14e4d1jsn83e4e93c7509",
-        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com"
-      }
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
+    Promise.all([
+      fetch(`https://the-cocktail-db.p.rapidapi.com/filter.php?i=${liquorType}`, {
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-key": "350df23b49msh7c681161d5c6cd9p14e4d1jsn83e4e93c7509",
+          "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com"
+        }
+      }),
+      //https://even-more-cocktails-api.herokuapp.com/api/v1/cocktails
+      fetch(`http://localhost:3000/api/v1/cocktails`, {
+        "method": "GET",
+      })
+    ]).then(function (responses) {
+      // Get a JSON object from each of the responses
+      return Promise.all(responses.map(function (response) {
+        return response.json();
+      }));
+    }).then((json) => {
+      Array.prototype.push.apply(json[1], json[0].drinks); //merges the arrays
+
       this.setState({ 
-        recipes: json.drinks
+        recipes: this.sortByKey(json[1], "strDrink")
       });
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  sortByKey = (array, key) =>  {
+    return array.sort(function(a, b)
+    {
+      var x = a[key]; var y = b[key];
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
   }
 
