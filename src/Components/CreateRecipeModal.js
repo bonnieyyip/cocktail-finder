@@ -15,31 +15,41 @@ class CreateRecipeModal extends React.Component {
         this.setState({isOpen: false})
     }
 
+    toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+
     handleSubmit = async (e) => {
         e.preventDefault();
 
         this.setState({isLoading: true})
 
-        console.log(e.target.fileinput.files[0]);
-
-        //https://even-more-cocktails-api.herokuapp.com
-        const rawResponse = await fetch('http://localhost:3000/api/v1/cocktails', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({strDrink: e.target.title.value, strInstructions: e.target.description.value})
-          })
-          .then((response) => {
-            console.log(response.json());
-            this.setState({isOpen: false})
-            this.setState({isLoading: false})
-          })
-
-        //   const content = await rawResponse.json();
-        //   console.log(content);
-
+        const file = document.querySelector('#fileinput').files[0];
+    
+        if (file !== undefined) {
+            this.toBase64(file).then(data => {
+                    //https://even-more-cocktails-api.herokuapp.com
+                
+                    var binaryData = Buffer.from(data.split(",")[1],"base64");
+                    const rawResponse = fetch('http://localhost:3000/api/v1/cocktails', {
+                        method: 'POST',
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({strDrink: e.target.title.value, strInstructions: e.target.description.value, strDrinkThumb: data})
+                    })
+                    .then((response) => {
+                        this.setState({isOpen: false})
+                        this.setState({isLoading: false})
+                    })
+                    .catch(err => console.log("ERR: " + err));
+                }
+            );
+        }
     }
 
     render() {
